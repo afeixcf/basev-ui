@@ -5,6 +5,8 @@ import VMaskLayer from './v-mask-layer'
 import VCol from './v-col'
 import VRow from './v-row'
 import VSelect from './v-select'
+import VScrollLoad from './v-scroll-load'
+import VPullRefresh from './v-pull-refresh'
 
 const components = {
   install,
@@ -14,7 +16,9 @@ const components = {
   VMaskLayer,
   VCol,
   VRow,
-  VSelect
+  VSelect,
+  VScrollLoad,
+  VPullRefresh
 }
 
 function install(Vue) {

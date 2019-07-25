@@ -27,6 +27,16 @@ export default new Router({
       path: '/v-select-page',
       name: 'VSelectPage',
       component: Pages.VSelectPage
+    },
+    {
+      path: '/v-scroll-load-page',
+      name: 'VScrollLoadPage',
+      component: Pages.VScrollLoadPage
+    },
+    {
+      path: '/v-pull-refresh-page',
+      name: 'VPullRefreshPage',
+      component: Pages.VPullRefreshPage
     }
     // {
     //   path: '/component1',

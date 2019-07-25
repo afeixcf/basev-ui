@@ -1,8 +1,6 @@
 <template>
 	<v-mask-layer ref="mask">
-		<template v-slot:content>
-			<v-select :list="list"></v-select>
-		</template>
+		<v-select :list="list"></v-select>
 	</v-mask-layer>
 </template>
 
@@ -15,7 +13,7 @@ export default {
 				{ label: '北京', value: 'beijing' },
 				{ label: '广州', value: 'guangzhou' },
 				{ label: '深圳', value: 'shenzhen' },
-				{ label: '重庆', value: 'chongqing' },
+				{ label: '重庆', value: 'chongqing' }
 			]
 		}
 	},

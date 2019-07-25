@@ -35,55 +35,53 @@
 			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
 		</div>
 		<v-mask-layer ref="mask" :on-close="closed" effect="fade">
-			<template v-slot:content>
-				<div class="test-mask-content">
-					<div class="h100 of-hidden mt50">
-						<v-image
-							:container-cls="containerCls"
-							:src="src"
-							:proxy-src="defaultUrl"
-							lazy
-							threshold="20"
-						></v-image>
-					</div>
-					<div class="h100 of-hidden mt50">
-						<v-image
-							:container-cls="containerCls"
-							:src="src"
-							:proxy-src="defaultUrl"
-							lazy
-							threshold="0"
-						></v-image>
-					</div>
-					<div class="h100 of-hidden mt50">
-						<v-image
-							:container-cls="containerCls"
-							:src="src"
-							:proxy-src="defaultUrl"
-							lazy
-							threshold="-100"
-						></v-image>
-					</div>
-					<div class="h100 of-hidden mt50">
-						<v-image
-							:container-cls="containerCls"
-							:src="src"
-							:proxy-src="defaultUrl"
-							lazy
-							threshold="-100"
-						></v-image>
-					</div>
-					<div class="h100 of-hidden mt50">
-						<v-image
-							:src="src"
-							:proxy-src="defaultUrl"
-							lazy
-							:container-cls="containerCls"
-							threshold="-100"
-						></v-image>
-					</div>
+			<div class="test-mask-content">
+				<div class="h100 of-hidden mt50">
+					<v-image
+						:container-cls="containerCls"
+						:src="src"
+						:proxy-src="defaultUrl"
+						lazy
+						threshold="20"
+					></v-image>
 				</div>
-			</template>
+				<div class="h100 of-hidden mt50">
+					<v-image
+						:container-cls="containerCls"
+						:src="src"
+						:proxy-src="defaultUrl"
+						lazy
+						threshold="0"
+					></v-image>
+				</div>
+				<div class="h100 of-hidden mt50">
+					<v-image
+						:container-cls="containerCls"
+						:src="src"
+						:proxy-src="defaultUrl"
+						lazy
+						threshold="-100"
+					></v-image>
+				</div>
+				<div class="h100 of-hidden mt50">
+					<v-image
+						:container-cls="containerCls"
+						:src="src"
+						:proxy-src="defaultUrl"
+						lazy
+						threshold="-100"
+					></v-image>
+				</div>
+				<div class="h100 of-hidden mt50">
+					<v-image
+						:src="src"
+						:proxy-src="defaultUrl"
+						lazy
+						:container-cls="containerCls"
+						threshold="-100"
+					></v-image>
+				</div>
+			</div>
 		</v-mask-layer>
 	</div>
 </template>
@@ -94,7 +92,7 @@ export default {
 		return {
 			src:
 				'http://www.gravatar.com/avatar/8944898bda77bbb0a83900bce89ad0e3?s=72&d=identicon',
-			containerCls: 'test-mask-content',
+			containerCls: 'test-mask-content'
 		}
 	},
 	mounted() {},

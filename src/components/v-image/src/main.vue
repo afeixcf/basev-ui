@@ -28,6 +28,7 @@ export default {
 	},
 	data() {
 		return {
+			destroy: function() {}
 		}
 	},
 	computed: {
@@ -45,14 +46,19 @@ export default {
 	mounted() {
 		console.info('VImage----mounted----')
 		if (this.lazy) {
-			lazyload({
-				container: this.containerCls ? document.querySelector('.' + this.containerCls) : document,
+			this.destroy = lazyload({
+				container: this.containerCls
+					? document.querySelector('.' + this.containerCls)
+					: document,
 				el: this.$el,
 				src: this.src,
 				defaultSrc: this.proxySrc,
 				threshold: parseInt(this.threshold)
-			})
+			}).destroy
 		}
+	},
+	beforeDestroy() {
+		this.destroy()
 	}
 }
 </script>
