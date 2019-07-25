@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Components from '../../lib/index'
 import Pages from '@/pages'
-import '@/theme/component1.less'
-import '@/theme/component2.less'
-import '@/theme/v-image.less'
+import Components from '@/components/index'
 
-Vue.use(Router)
 Vue.use(Components)
+Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -17,14 +14,29 @@ export default new Router({
       component: Pages.VImagePage
     },
     {
-      path: '/component1',
-      name: 'component1',
-      component: Components.component1
+      path: '/v-mask-layer-page',
+      name: 'VMaskLayerPage',
+      component: Pages.VMaskLayerPage
     },
     {
-      path: '/component2',
-      name: 'component2',
-      component: Components.component2
+      path: '/v-col-page',
+      name: 'VColPage',
+      component: Pages.VColPage
+    },
+    {
+      path: '/v-select-page',
+      name: 'VSelectPage',
+      component: Pages.VSelectPage
     }
+    // {
+    //   path: '/component1',
+    //   name: 'component1',
+    //   component: Components.component1
+    // },
+    // {
+    //   path: '/component2',
+    //   name: 'component2',
+    //   component: Components.component2
+    // }
   ]
 })

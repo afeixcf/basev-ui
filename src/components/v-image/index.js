@@ -1,4 +1,4 @@
-import VImage from './src/v-image.vue'
+import VImage from './src/main.vue'
 
 VImage.install = function(Vue) {
   console.info('VImage----install----')

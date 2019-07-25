@@ -1,4 +1,9 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .c-1 {
     color: #999;
 }
@@ -16,6 +21,18 @@
 }
 .c-bold {
     font-weight: bold;
+}
+body.modal-open {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.of-hidden {
+    overflow: hidden;
 }
 
 .txt-center {
@@ -155,3 +172,10 @@ img {
     .bordercalc(@num + 2);
 }
 .bordercalc(2);
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
