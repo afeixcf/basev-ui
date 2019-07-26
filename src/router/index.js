@@ -37,6 +37,11 @@ export default new Router({
       path: '/v-pull-refresh-page',
       name: 'VPullRefreshPage',
       component: Pages.VPullRefreshPage
+    },
+    {
+      path: '/v-toast-page',
+      name: 'VToastPage',
+      component: Pages.VToastrPage
     }
     // {
     //   path: '/component1',

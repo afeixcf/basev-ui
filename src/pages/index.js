@@ -4,6 +4,7 @@ import VColPage from './v-col-page.vue'
 import VSelectPage from './v-select-page.vue'
 import VScrollLoadPage from './v-scroll-load-page.vue'
 import VPullRefreshPage from './v-pull-refresh-page.vue'
+import VToastrPage from './v-toastr-page.vue'
 
 export default {
   VImagePage,
@@ -11,5 +12,6 @@ export default {
   VColPage,
   VSelectPage,
   VScrollLoadPage,
-  VPullRefreshPage
+  VPullRefreshPage,
+  VToastrPage
 }

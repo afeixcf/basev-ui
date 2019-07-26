@@ -86,19 +86,20 @@ export default {
 			return parseInt(this.distance)
 		}
 	},
-	methods: {},
+	methods: {
+		touchstart(){},
+		touchmove(){},
+		touchend(){}
+	},
 	mounted() {
-		console.log(this.$slots)
 		const container = this.containerCls
 			? document.querySelector('.' + this.containerCls)
 			: document
 		const scrollContainer = container === document ? document.body : container
-		const touchstart = e => {
-			this.startY = e.touches[0].pageY
-		}
+		
 		const cb = () => {
-			scrollContainer.style.transform = `translate3d(0, 0, 0)`
-			scrollContainer.style.webkitTransform = `translate3d(0, 0, 0)`
+			scrollContainer.style.transform = `none`
+			scrollContainer.style.webkitTransform = `none`
 			setTimeout(() => {
 				scrollContainer.classList.remove('___animate')
 				this.can = true
@@ -113,7 +114,11 @@ export default {
 			this.status = 4
 			setTimeout(cb, this.ms)
 		}
-		const touchend = e => {
+
+		this.touchstart = e => {
+			this.startY = e.touches[0].pageY
+		}
+		this.touchend = e => {
 			this.disY && scrollContainer.classList.add('___animate')
 			if (this.disY >= this.dis) {
 				scrollContainer.style.transform = `translate3d(0, ${this.dis}px, 0)`
@@ -126,7 +131,7 @@ export default {
 				this.disY && cb()
 			}
 		}
-		const touchmove = e => {
+		this.touchmove = e => {
 			if (!this.can) return
 			const scrollTop = getScrollTop(container)
 			this.endY = e.changedTouches[0].pageY
@@ -140,14 +145,17 @@ export default {
 				e.preventDefault()
 			}
 		}
-		container.addEventListener('touchstart', touchstart, { passive: false })
-		container.addEventListener('touchmove', touchmove, { passive: false })
-		container.addEventListener('touchend', touchend, { passive: false })
+		container.addEventListener('touchstart', this.touchstart, { passive: false })
+		container.addEventListener('touchmove', this.touchmove, { passive: false })
+		container.addEventListener('touchend', this.touchend, { passive: false })
 	},
 	beforeDestroy() {
-		container.removeEventListener('touchstart', touchstart)
-		container.removeEventListener('touchmove', touchmove)
-		container.removeEventListener('touchend', touchend)
+		const container = this.containerCls
+			? document.querySelector('.' + this.containerCls)
+			: document
+		container.removeEventListener('touchstart', this.touchstart)
+		container.removeEventListener('touchmove', this.touchmove)
+		container.removeEventListener('touchend', this.touchend)
 	}
 }
 </script>

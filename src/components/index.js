@@ -7,6 +7,7 @@ import VRow from './v-row'
 import VSelect from './v-select'
 import VScrollLoad from './v-scroll-load'
 import VPullRefresh from './v-pull-refresh'
+import VToast from './v-toastr'
 
 const components = {
   install,
@@ -18,14 +19,15 @@ const components = {
   VRow,
   VSelect,
   VScrollLoad,
-  VPullRefresh
+  VPullRefresh,
+  VToast
 }
 
 function install(Vue) {
   for (let key in components) {
     if (key === 'install') continue
-    console.info('install----all----' + components[key].name)
-    Vue.component(components[key].name, components[key])
+
+    components[key].install(Vue)
   }
 }
 
