@@ -36,7 +36,7 @@ export default {
 			this.type = type
 			this.visible = true
 			setTimeout(() => {
-				// this.hide()
+				this.hide()
 				cb && cb()
 			}, timeOut)
 			return this
