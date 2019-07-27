@@ -8,6 +8,7 @@ import VSelect from './v-select'
 import VScrollLoad from './v-scroll-load'
 import VPullRefresh from './v-pull-refresh'
 import VToast from './v-toastr'
+import VTooltip from './v-tooltip'
 
 const components = {
   install,
@@ -20,7 +21,8 @@ const components = {
   VSelect,
   VScrollLoad,
   VPullRefresh,
-  VToast
+  VToast,
+  VTooltip
 }
 
 function install(Vue) {

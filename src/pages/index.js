@@ -5,6 +5,7 @@ import VSelectPage from './v-select-page.vue'
 import VScrollLoadPage from './v-scroll-load-page.vue'
 import VPullRefreshPage from './v-pull-refresh-page.vue'
 import VToastrPage from './v-toastr-page.vue'
+import VTooltipPage from './v-tooltip-page.vue'
 
 export default {
   VImagePage,
@@ -13,5 +14,6 @@ export default {
   VSelectPage,
   VScrollLoadPage,
   VPullRefreshPage,
-  VToastrPage
+  VToastrPage,
+  VTooltipPage
 }

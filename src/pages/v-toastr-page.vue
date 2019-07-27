@@ -28,6 +28,9 @@ export default {
 	data() {
 		return {}
 	},
+	methods: {
+		
+	},
 	mounted() {
 		this.$toastr.show(
 			'网络错误，请稍后再试',

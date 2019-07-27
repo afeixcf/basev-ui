@@ -42,6 +42,11 @@ export default new Router({
       path: '/v-toast-page',
       name: 'VToastPage',
       component: Pages.VToastrPage
+    },
+    {
+      path: '/v-tooltip-page',
+      name: 'VTooltipPage',
+      component: Pages.VTooltipPage
     }
     // {
     //   path: '/component1',
