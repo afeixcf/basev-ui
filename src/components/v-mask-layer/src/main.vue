@@ -2,7 +2,9 @@
 	<transition :name="effect">
 		<div v-if="visible" class="v-mask-container">
 			<div class="v-mask-layer" @click="close"></div>
-			<slot></slot>
+			<div class="relative">
+				<slot></slot>
+			</div>
 		</div>
 	</transition>
 </template>

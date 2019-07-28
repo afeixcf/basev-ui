@@ -47,6 +47,15 @@ export default new Router({
       path: '/v-tooltip-page',
       name: 'VTooltipPage',
       component: Pages.VTooltipPage
+    },
+    {
+      path: '/v-search-page',
+      name: 'VSearchPage',
+      component: Pages.VSearchPage
+    },
+    {
+      path: '/v-search-page2',
+      component: Pages.VSearchPage2
     }
     // {
     //   path: '/component1',

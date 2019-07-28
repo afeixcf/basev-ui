@@ -4,25 +4,78 @@
     color: white;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     position: absolute;
     padding: 10px;
     border-radius: 6px;
-    max-width: 250px;
+    max-width: 50%;
 }
-.v-tooltip-content::after {
+.v-tooltip-arrow {
     content: '';
     border: @arrow-width solid transparent;
     position: absolute;
 }
-.v-tooltip-top::after {
+.v-tooltip-top .v-tooltip-arrow {
     border-top: @arrow-width solid rgba(0, 0, 0, .7);
     top: 100%;
     left: 50%;
     transform: translate3d(-50%, 0, 0);
 }
-.v-tooltip-left::after {
+.v-tooltip-top-start .v-tooltip-arrow {
+    border-top: @arrow-width solid rgba(0, 0, 0, .7);
+    top: 100%;
+    left: 10px;
+}
+.v-tooltip-top-end .v-tooltip-arrow {
+    border-top: @arrow-width solid rgba(0, 0, 0, .7);
+    top: 100%;
+    right: 10px;
+}
+.v-tooltip-bottom .v-tooltip-arrow {
+    border-bottom: @arrow-width solid rgba(0, 0, 0, .7);
+    top: -2 * @arrow-width;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+}
+.v-tooltip-bottom-start .v-tooltip-arrow {
+    border-bottom: @arrow-width solid rgba(0, 0, 0, .7);
+    top: -2 * @arrow-width;
+    left: 10px;
+}
+.v-tooltip-bottom-end .v-tooltip-arrow {
+    border-bottom: @arrow-width solid rgba(0, 0, 0, .7);
+    top: -2 * @arrow-width;
+    right: 10px;
+}
+.v-tooltip-left .v-tooltip-arrow {
     border-left: @arrow-width solid rgba(0, 0, 0, .7);
     right: -2 * @arrow-width;
     top: 50%;
     transform: translate3d(0, -50%, 0);
+}
+.v-tooltip-left-start .v-tooltip-arrow {
+    border-left: @arrow-width solid rgba(0, 0, 0, .7);
+    right: -2 * @arrow-width;
+    top: 10px;
+}
+.v-tooltip-left-end .v-tooltip-arrow {
+    border-left: @arrow-width solid rgba(0, 0, 0, .7);
+    right: -2 * @arrow-width;
+    bottom: 10px;
+}
+.v-tooltip-right .v-tooltip-arrow {
+    border-right: @arrow-width solid rgba(0, 0, 0, .7);
+    left: -2 * @arrow-width;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+}
+.v-tooltip-right-start .v-tooltip-arrow {
+    border-right: @arrow-width solid rgba(0, 0, 0, .7);
+    left: -2 * @arrow-width;
+    top: 10px;
+}
+.v-tooltip-right-end .v-tooltip-arrow {
+    border-right: @arrow-width solid rgba(0, 0, 0, .7);
+    left: -2 * @arrow-width;
+    bottom: 10px;
 }
