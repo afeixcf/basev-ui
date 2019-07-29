@@ -1,10 +1,8 @@
 <template>
-	<transition :name="effect">
+	<transition :name="effect" appear>
 		<div v-if="visible" class="v-mask-container">
 			<div class="v-mask-layer" @click="close"></div>
-			<div class="relative">
-				<slot></slot>
-			</div>
+			<slot></slot>
 		</div>
 	</transition>
 </template>
@@ -14,7 +12,10 @@ export default {
 	name: 'VMaskLayer',
 	props: {
 		onClose: Function,
-		effect: String
+		effect: {
+			type: String,
+			default: 'fade'
+		}
 		
 	},
 	data() {
