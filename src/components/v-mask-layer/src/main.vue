@@ -1,7 +1,11 @@
 <template>
 	<transition :name="effect" appear>
-		<div v-if="visible" class="v-mask-container">
-			<div class="v-mask-layer" @click="close"></div>
+		<div
+			v-if="visible"
+			class="v-mask-container"
+			:style="style"
+			@click="convenientFn"
+		>
 			<slot></slot>
 		</div>
 	</transition>
@@ -15,8 +19,14 @@ export default {
 		effect: {
 			type: String,
 			default: 'fade'
-		}
-		
+		},
+		background: {
+			type: String,
+			default() {
+				return this.MASK_BACKGROUND || 'rgba(0,0,0,.5)'
+			}
+		},
+		convenient: Boolean
 	},
 	data() {
 		return {
@@ -35,26 +45,32 @@ export default {
 				this.onClose(this)
 			}
 			ModalHelper.beforeClose()
+		},
+		convenientFn() {
+			if (this.convenient) this.close()
 		}
 	},
-	created() {
-		console.info('VMaskLayer----created----')
-	},
+	created() {},
 	mounted() {
-		console.info('VMaskLayer----mounted----')
+		console.log(this.background)
+	},
+	computed: {
+		style() {
+			return {
+				background: this.background
+			}
+		}
 	}
 }
 let ModalHelper = (function(bodyCls) {
-	let scrollTop // 在闭包中定义一个用来保存滚动位置的变量
+	let scrollTop
 	return {
 		afterOpen: function() {
-			//弹出之后记录保存滚动位置，并且给body添加.modal-open
 			scrollTop = document.scrollingElement.scrollTop
 			document.body.classList.add(bodyCls)
 			document.body.style.top = -scrollTop + 'px'
 		},
 		beforeClose: function() {
-			//关闭时将.modal-open移除并还原之前保存滚动位置
 			document.body.classList.remove(bodyCls)
 			document.scrollingElement.scrollTop = scrollTop
 		}

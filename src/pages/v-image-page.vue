@@ -2,36 +2,35 @@
 	<div>
 		<div>v-image 组件</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy threshold="20"></v-image>
+			<v-image :src="src" lazy threshold="20"></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl"></v-image>
+			<v-image :src="src"></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
 			<v-image
 				:src="src"
-				:proxy-src="defaultUrl"
 				lazy
 				threshold="-200"
 			></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 	</div>
 </template>

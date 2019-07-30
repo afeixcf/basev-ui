@@ -1,22 +1,22 @@
 <template>
 	<div>
 		<v-pull-refresh :on-refresh="onRefresh" distance="70">
-            <template v-slot:pull>
-                请继续下拉
-            </template>
-            <template v-slot:beforeLoad>
-                送开以触发更新
-            </template>
-            <template v-slot:loading>
-                更新中
-            </template>
-            <template v-slot:loadSuccess>
-                更新成功
-            </template>
-            <template v-slot:loadFail>
-                更新失败
-            </template>
-        </v-pull-refresh>
+			<template v-slot:pull>
+				请继续下拉
+			</template>
+			<template v-slot:beforeLoad>
+				送开以触发更新
+			</template>
+			<template v-slot:loading>
+				更新中
+			</template>
+			<template v-slot:loadSuccess>
+				更新成功
+			</template>
+			<template v-slot:loadFail>
+				更新失败
+			</template>
+		</v-pull-refresh>
 		<div class="h60">asdasdas</div>
 		<div class="h60">asdasdas</div>
 		<div class="h60">asdasdas</div>
@@ -37,36 +37,36 @@
 		<div class="h60">asdasdas</div>
 		<div class="h60">asdasdas</div>
 		<!-- <div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy threshold="20"></v-image>
+			<v-image :src="src"  lazy threshold="20"></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl"></v-image>
+			<v-image :src="src" ></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
 			<v-image
 				:src="src"
-				:proxy-src="defaultUrl"
+				
 				lazy
 				threshold="-200"
 			></v-image>
 		</div>
 		<div class="h100 mt50 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src"  lazy></v-image>
 		</div> -->
 	</div>
 </template>

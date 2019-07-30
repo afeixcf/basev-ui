@@ -15,7 +15,12 @@ export default {
 				return /^(data:|http:|https:)/.test(val)
 			}
 		},
-		proxySrc: String,
+		proxySrc: {
+			type: String,
+			default() {
+				return this.IMAGE_PROXY_SRC || require('./gray_block.png')
+			}
+		},
 		lazy: {
 			type: Boolean,
 			default: false
@@ -24,7 +29,8 @@ export default {
 			type: [Number, String],
 			default: 0
 		},
-		containerCls: String
+		containerCls: String,
+		effect: String
 	},
 	data() {
 		return {
@@ -53,7 +59,8 @@ export default {
 				el: this.$el,
 				src: this.src,
 				defaultSrc: this.proxySrc,
-				threshold: parseInt(this.threshold)
+				threshold: parseInt(this.threshold),
+				effect: (this.effect || '').toLowerCase()
 			}).destroy
 		}
 	},

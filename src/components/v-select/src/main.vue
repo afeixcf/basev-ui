@@ -1,61 +1,69 @@
 <template>
-	<div class="v-select-container">
-		<v-row class="plr10" v-if="title">
-			<v-col class="h50 lh50" @click.native="cancel" v-if="showCancelBtn"
-				>取消</v-col
-			>
-			<v-col class="flex-1 txt-center h50 lh50">{{ title }}</v-col>
-			<v-col
-				class="txt-right h50 lh50"
-				@click.native="confirm"
-				v-if="showCancelBtn"
-				>完成</v-col
-			>
-		</v-row>
-		<div
-			class="v-select-touch-container of-hidden"
-			@touchstart="touchstart($event)"
-			@touchmove.prevent="touchmove($event)"
-			@touchend="touchend($event)"
-		>
-			<div
-				ref="scrollEle"
-				class="v-select-touch-content"
-				data-top="0"
-				:style="scrollTransform"
-			>
-				<div
-					v-for="(option, j) in selectData"
-					ref="scrollItem"
-					:key="j"
-					class="txt-center pt10 pb10 v-select-item"
-				>
-					{{ option.label }}
-				</div>
-			</div>
-			<div class="v-select-touch-result" :style="positionStyle">
-				<div :style="scrollTransform" ref="scrollRst">
-					<div
-						v-for="(option, j) in selectData"
-						ref="scrollItem"
-						:key="j"
-						class="txt-center pt10 pb10 v-select-item"
+	<v-mask-layer ref="___select" @click.native="closeMask">
+		<transition :name="effect" appear>
+			<div class="v-select-container" v-show="visible">
+				<v-row class="plr10" v-if="title || showCloseBtn">
+					<v-col class="h50 lh50" @click.native="close" v-if="showCloseBtn"
+						>取消</v-col
 					>
-						{{ option.label }}
+					<v-col class="flex-1 txt-center h50 lh50" v-if="title">{{
+						title
+					}}</v-col>
+					<v-col
+						class="txt-right h50 lh50"
+						@click.native="confirm"
+						v-if="showCloseBtn"
+						>完成</v-col
+					>
+				</v-row>
+				<div
+					class="v-select-touch-container of-hidden"
+					@touchstart="touchstart($event)"
+					@touchmove.prevent="touchmove($event)"
+					@touchend="touchend($event)"
+				>
+					<div
+						ref="scrollEle"
+						class="v-select-touch-content"
+						data-top="0"
+						:style="scrollTransform"
+					>
+						<div
+							v-for="(option, j) in selectData"
+							ref="scrollItem"
+							:key="j"
+							class="txt-center pt20 pb20 v-select-item"
+						>
+							{{ option.label }}
+						</div>
+					</div>
+					<div class="v-select-touch-result" :style="positionStyle">
+						<div :style="scrollTransform" ref="scrollRst">
+							<div
+								v-for="(option, j) in selectData"
+								ref="scrollItem"
+								:key="j"
+								class="txt-center pt20 pb20 v-select-item"
+							>
+								{{ option.label }}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		</transition>
+	</v-mask-layer>
 </template>
 
 <script>
+// 外套maskLayer组件时 关闭怎么样产生动画？
+
 const ANIMATE_CLASS = '___animate'
 export default {
 	name: 'VSelect',
 	data() {
 		return {
-			// title: '选择城市',
+			visible: false,
 			startY: 0,
 			endY: 0,
 			disY: 0,
@@ -64,12 +72,12 @@ export default {
 				bottom: 0
 			},
 			tops: [],
-
 			timestart: 0,
 			power: 0,
 			prev: 0,
 			timer: null,
-			selectOption: null
+			selectOption: null,
+			selectMask: null
 		}
 	},
 	props: {
@@ -77,22 +85,19 @@ export default {
 			required: true,
 			type: Array
 		},
+		effect: {
+			type: String,
+			default: 'fadeup'
+		},
 		onSelect: Function,
+		onClose: Function,
 		title: String,
-		showCancelBtn: Boolean
+		showCloseBtn: Boolean,
+		showConfirmBtn: Boolean,
+		defaultValue: [String, Number]
 	},
 	mounted() {
-		const scrollEle = this.$refs.scrollEle
-		const scrollItem = this.$refs.scrollItem[0]
-		scrollEle.style.top = scrollItem.offsetHeight * 2 + 'px'
-		scrollEle.style.height = scrollItem.offsetHeight * 5 + 'px'
-		this.positionStyle.top = this.positionStyle.bottom =
-			(scrollEle.offsetHeight - scrollItem.offsetHeight) / 2 + 'px'
-		this.tops = this.selectData.map((item, i) => {
-			return scrollItem.offsetHeight * i
-		})
-
-		document.addEventListener('click', this.confirm, false)
+		this.selectMask = this.$refs.___select
 	},
 	methods: {
 		touchstart(e) {
@@ -113,7 +118,7 @@ export default {
 			this.power = e.changedTouches[0].pageY - this.prev
 			this.prev = e.changedTouches[0].pageY
 		},
-		touchend(e) {
+		touchend() {
 			const friction = ((this.power >> 31) * 2 + 1) * 0.5
 			this.timer = setInterval(() => {
 				const scrollEle = this.$refs.scrollEle
@@ -145,12 +150,35 @@ export default {
 			}, 20)
 		},
 
-		cancel() {
-			console.log('cancel')
+		close() {
+			this.visible = false
+			this.$nextTick(this.selectMask.close)
+			this.onClose()
 		},
 
 		confirm() {
 			this.onSelect(this.selectOption)
+			this.close()
+		},
+
+		open() {
+			this.selectMask.open()
+			this.visible = true
+			this.$nextTick(() => {
+				const scrollEle = this.$refs.scrollEle
+				const scrollItem = this.$refs.scrollItem[0]
+				scrollEle.style.top = scrollItem.offsetHeight * 2 + 'px'
+				scrollEle.style.height = scrollItem.offsetHeight * 5 + 'px'
+				this.positionStyle.top = this.positionStyle.bottom =
+					(scrollEle.offsetHeight - scrollItem.offsetHeight) / 2 + 'px'
+				this.tops = this.selectData.map((item, i) => {
+					if (this.defaultValue === item.value) {
+						this.disY = scrollEle.dataset['top'] = -scrollItem.offsetHeight * i
+						this.selectOption = item
+					}
+					return scrollItem.offsetHeight * i
+				})
+			})
 		},
 
 		ease(h) {
@@ -164,6 +192,10 @@ export default {
 					clearInterval(this.timer)
 				}
 			}, 20)
+		},
+
+		closeMask() {
+			if (!this.showCloseBtn) this.confirm()
 		}
 	},
 
@@ -181,6 +213,9 @@ export default {
 				transform: 'translate3d(0,' + this.disY + 'px, 0)'
 			}
 		}
+	},
+	beforeDestroy() {
+		document.removeEventListener('click', this.confirm, false)
 	}
 }
 </script>

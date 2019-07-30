@@ -1,46 +1,40 @@
 <template>
 	<div>
 		<div style="background:blue;height: 200px;" @click="openMask"></div>
-		<img :src="src" alt="" />
+		<!-- <img :src="src" alt="" /> -->
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy threshold="20"></v-image>
+			<v-image :src="src" lazy threshold="20"></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden" @click="openMask">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image
-				:src="src"
-				:proxy-src="defaultUrl"
-				lazy
-				threshold="-100"
-			></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
 		<div class="h100 of-hidden">
-			<v-image :src="src" :proxy-src="defaultUrl" lazy></v-image>
+			<v-image :src="src" lazy></v-image>
 		</div>
-		<v-mask-layer ref="mask" :on-close="closed" effect="fade">
+		<v-mask-layer ref="mask" :on-close="closed">
 			<div class="test-mask-content">
 				<div class="h100 of-hidden mt50">
 					<v-image
 						:container-cls="containerCls"
 						:src="src"
-						:proxy-src="defaultUrl"
 						lazy
 						threshold="20"
 					></v-image>
@@ -49,7 +43,6 @@
 					<v-image
 						:container-cls="containerCls"
 						:src="src"
-						:proxy-src="defaultUrl"
 						lazy
 						threshold="0"
 					></v-image>
@@ -58,7 +51,6 @@
 					<v-image
 						:container-cls="containerCls"
 						:src="src"
-						:proxy-src="defaultUrl"
 						lazy
 						threshold="-100"
 					></v-image>
@@ -67,7 +59,6 @@
 					<v-image
 						:container-cls="containerCls"
 						:src="src"
-						:proxy-src="defaultUrl"
 						lazy
 						threshold="-100"
 					></v-image>
@@ -75,7 +66,6 @@
 				<div class="h100 of-hidden mt50">
 					<v-image
 						:src="src"
-						:proxy-src="defaultUrl"
 						lazy
 						:container-cls="containerCls"
 						threshold="-100"
