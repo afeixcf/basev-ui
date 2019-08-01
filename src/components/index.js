@@ -5,11 +5,14 @@ import VMaskLayer from './v-mask-layer'
 import VCol from './v-col'
 import VRow from './v-row'
 import VSelect from './v-select'
+import VSelectSingle from './v-select-single'
+import VSelectGroup from './v-select-group'
 import VScrollLoad from './v-scroll-load'
 import VPullRefresh from './v-pull-refresh'
 import VToast from './v-toastr'
 import VTooltip from './v-tooltip'
 import VSearch from './v-search'
+import VTimePicker from './v-time-picker'
 
 const components = {
   install,
@@ -20,11 +23,14 @@ const components = {
   VCol,
   VRow,
   VSelect,
+  VSelectSingle,
+  VSelectGroup,
   VScrollLoad,
   VPullRefresh,
   VToast,
   VTooltip,
-  VSearch
+  VSearch,
+  VTimePicker
 }
 
 function install(Vue) {

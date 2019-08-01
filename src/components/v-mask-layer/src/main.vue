@@ -1,7 +1,7 @@
 <template>
 	<transition :name="effect" appear>
 		<div
-			v-if="visible"
+			v-show="visible"
 			class="v-mask-container"
 			:style="style"
 			@click="convenientFn"
@@ -15,7 +15,7 @@
 export default {
 	name: 'VMaskLayer',
 	props: {
-		onClose: Function,
+		onclose: Function,
 		effect: {
 			type: String,
 			default: 'fade'
@@ -41,18 +41,14 @@ export default {
 		close() {
 			this.visible = false
 
-			if (typeof this.onClose === 'function') {
-				this.onClose(this)
+			if (typeof this.onclose === 'function') {
+				this.onclose()
 			}
 			ModalHelper.beforeClose()
 		},
 		convenientFn() {
 			if (this.convenient) this.close()
 		}
-	},
-	created() {},
-	mounted() {
-		console.log(this.background)
 	},
 	computed: {
 		style() {

@@ -29,7 +29,7 @@
 		<div class="h100 of-hidden">
 			<v-image :src="src" lazy></v-image>
 		</div>
-		<v-mask-layer ref="mask" :on-close="closed">
+		<v-mask-layer ref="mask" :onclose="closed">
 			<div class="test-mask-content">
 				<div class="h100 of-hidden mt50">
 					<v-image
@@ -90,8 +90,8 @@ export default {
 		openMask() {
 			this.$refs.mask.open()
 		},
-		closed(mask) {
-			console.log(mask)
+		closed() {
+			console.log('close')
 		}
 	}
 }
