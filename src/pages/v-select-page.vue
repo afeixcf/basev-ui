@@ -3,21 +3,10 @@
 		<p @click="openSelect">普通选择</p>
 		<p @click="openTestSelectGroup">多列选择</p>
 		<p @click="openSelectGroup">联动选择</p>
-		<p @click="openTimeSelector">时间选择</p>
+		<p @click="openDateSelector">日期选择: {{ datePickerValue }}</p>
+		<p @click="openTimeSelector">时间选择: {{ timePickerValue }}</p>
+		<p @click="openTimeSelector2">时间选择</p>
 
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
-		<p>231312231</p>
 		<p>231312231</p>
 		<p>231312231</p>
 		<p>231312231</p>
@@ -37,18 +26,19 @@
 			></v-select>
 		</v-mask-layer> -->
 
-		<v-select-single :list="list" ref="select" :showCloseBtn="hide" :onselect="onSelectSingle"
+		<v-select-single :list="list" ref="select" :onselect="onSelectSingle"
 			:default-value="selectValue"></v-select-single>
 
 		<v-select-group ref="selectGroup" :list="groupList" :default-value="defaultValue" :onselect="onSelect"
-			:onclose="onClose">
+			:onclose="onClose" convenient>
 		</v-select-group>
 
 		<v-select-group ref="testSelectGroup" :list="testList" :default-value="defaultValue"
 			:onchange="testSelectChange">
 		</v-select-group>
 
-		<v-time-picker ref="timepicker" :onselect="timepickerSelect" default-value="2:00"></v-time-picker>
+		<v-time-picker ref="timepicker" convenient :onselect="timepickerSelect" :default-value="timePickerValue"></v-time-picker>
+		<v-time-picker ref="timepicker2" :onselect="timepickerSelect" default-value="2:15"></v-time-picker>
 	</div>
 </template>
 
@@ -63,6 +53,8 @@ p {
 export default {
 	data() {
 		return {
+			timePickerValue: '13:14',
+			datePickerValue: '2015-05-25',
 			selectValue: 'shanghai2',
 			defaultValue: ['shanghai', 'ja', 'ja3'],
 			list: [
@@ -244,13 +236,13 @@ export default {
 	},
 	methods: {
 		testSelectChange(option, resetListPosition) {
-			this.$set(this.testList, 2, [
-				{
-					label: '123',
-					value: '1234'
-				}
-			])
-			resetListPosition(2)
+			// this.$set(this.testList, 2, [
+			// 	{
+			// 		label: '123',
+			// 		value: '1234'
+			// 	}
+			// ])
+			// resetListPosition(2)
 		},
 		onSelectSingle(option) {
 			console.log(option)
@@ -289,8 +281,16 @@ export default {
 		openTimeSelector() {
 			this.$refs.timepicker.open()
 		},
+		openTimeSelector2() {
+			this.$refs.timepicker2.open()
+		},
 		timepickerSelect(time) {
 			console.log(time)
+			this.timePickerValue = time
+		},
+
+		openDateSelector() {
+			this.$refs.datepicker.open()
 		}
 	}
 }

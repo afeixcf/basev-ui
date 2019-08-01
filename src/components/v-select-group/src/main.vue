@@ -1,9 +1,9 @@
 <template>
-	<v-mask-layer ref="___select___group">
+	<v-mask-layer ref="___select___group" @click.native="closeSelectMask">
 		<transition name="fadeup" appear>
 			<div class="v-select-group-container" v-show="visible">
 				<v-row class="plr10" :style="headerStyle" v-show="(title || showCloseBtn)">
-					<v-col class="h50 lh50" @click.native="close">
+					<v-col class="h50 lh50" @click.native.stop="close">
 						<span v-if="showCloseBtn">取消</span>
 					</v-col>
 
@@ -11,7 +11,7 @@
 						<span v-if="title">{{ title }}</span>
 					</v-col>
 
-					<v-col class="txt-right h50 lh50" @click.native="confirm">
+					<v-col class="txt-right h50 lh50" @click.native.stop="confirm">
 						<span v-if="showCloseBtn">完成</span>
 					</v-col>
 				</v-row>
@@ -55,6 +55,7 @@ export default {
 		onclose: Function,
 		onchange: Function,
 		title: String,
+		convenient: Boolean,
 		showCloseBtn: {
 			type: Boolean,
 			default: true
@@ -102,6 +103,14 @@ export default {
 				this.selectValue = JSON.parse(JSON.stringify(this.values))
 				// this.selectValue = this.values
 			}, 100)
+		},
+		closeSelectMask() {
+			if (!this.showCloseBtn) {
+				this.confirm()
+				return
+			}
+
+			if (this.convenient) this.close()
 		},
 		confirm() {
 			this.onselect && this.onselect(this.selectOptions)

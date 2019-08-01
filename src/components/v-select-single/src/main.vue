@@ -27,6 +27,7 @@ export default {
 		},
 		onselect: Function,
 		onclose: Function,
+		convenient: Boolean,
 		title: String,
 		showCloseBtn: {
 			type: Boolean,
@@ -59,6 +60,12 @@ export default {
 		closeSelectMask() {
 			if (!this.showCloseBtn) {
 				this.$refs.select.confirm()
+				this.$refs.mask.close()
+				return
+			}
+
+			if (this.convenient) {
+				this.$refs.select.close()
 				this.$refs.mask.close()
 			}
 		}

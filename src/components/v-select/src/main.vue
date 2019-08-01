@@ -3,7 +3,7 @@
 		<div class="v-select-container flex-1" v-if="visible">
 			<v-row class="plr10" v-show="(title || showCloseBtn)" :style="headerStyle">
 				<v-col class="h50 lh50">
-					<span v-if="showCloseBtn" @click="close">取消</span>
+					<span v-if="showCloseBtn" @click.stop="close">取消</span>
 				</v-col>
 
 				<v-col class="flex-1 txt-center h50 lh50">
@@ -11,7 +11,7 @@
 				</v-col>
 
 				<v-col class="txt-right h50 lh50">
-					<span v-if="showCloseBtn" @click="confirm">完成</span>
+					<span v-if="showCloseBtn" @click.stop="confirm">完成</span>
 				</v-col>
 			</v-row>
 			<div class="v-select-touch-container of-hidden" @touchstart="touchstart($event)"

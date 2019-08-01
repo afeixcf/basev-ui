@@ -1,5 +1,6 @@
 <template>
-	<v-select-group ref="timepicker" :list="timeList" :default-value="timeValue" :onselect="confirm">
+	<v-select-group ref="timepicker" :list="timeList" :default-value="timeValue" :onselect="confirm"
+		:convenient="convenient">
 	</v-select-group>
 </template>
 
@@ -180,16 +181,17 @@ export default {
 			}
 		},
 		onclose: Function,
-		onselect: Function
+		onselect: Function,
+		convenient: Boolean
 	},
 	computed: {
 		timeList() {
 			return this.list
 		},
-		timeValue () {
+		timeValue() {
 			let defaultValue = this.defaultValue.replace('：', ':')
-			defaultValue = this.defaultValue.replace(/\s/g,"")
-			
+			defaultValue = this.defaultValue.replace(/\s/g, '')
+
 			return defaultValue.split(':').map(val => parseInt(val))
 		}
 	},
@@ -198,7 +200,8 @@ export default {
 			this.$refs.timepicker.open()
 		},
 		confirm(options) {
-			this.onselect && this.onselect(options.map(option => option.label).join(':'))
+			this.onselect &&
+				this.onselect(options.map(option => option.label).join(':'))
 		}
 	}
 }
