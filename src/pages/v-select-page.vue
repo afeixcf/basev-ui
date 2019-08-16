@@ -26,8 +26,8 @@
 			></v-select>
 		</v-mask-layer> -->
 
-		<v-select-single :list="list" ref="select" :onselect="onSelectSingle"
-			:default-value="selectValue"></v-select-single>
+		<v-select-single :list="list" ref="select" :onselect="onSelectSingle" :default-value="selectValue">
+		</v-select-single>
 
 		<v-select-group ref="selectGroup" :list="groupList" :default-value="defaultValue" :onselect="onSelect"
 			:onclose="onClose" convenient>
@@ -37,7 +37,12 @@
 			:onchange="testSelectChange">
 		</v-select-group>
 
-		<v-time-picker ref="timepicker" convenient :onselect="timepickerSelect" :default-value="timePickerValue"></v-time-picker>
+		<v-date-picker ref="datepicker" :onselect="datePickerSelect" convenient :onclose="closeDatePicker"
+			:onchange="changeDatePicker">
+		</v-date-picker>
+
+		<v-time-picker ref="timepicker" convenient :onselect="timepickerSelect" :default-value="timePickerValue">
+		</v-time-picker>
 		<v-time-picker ref="timepicker2" :onselect="timepickerSelect" default-value="2:15"></v-time-picker>
 	</div>
 </template>
@@ -291,6 +296,15 @@ export default {
 
 		openDateSelector() {
 			this.$refs.datepicker.open()
+		},
+		datePickerSelect(options) {
+			console.log(options)
+		},
+		closeDatePicker() {
+			console.log('close')
+		},
+		changeDatePicker(values, options) {
+			console.log(values)
 		}
 	}
 }

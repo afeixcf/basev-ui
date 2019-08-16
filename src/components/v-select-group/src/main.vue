@@ -1,7 +1,7 @@
 <template>
 	<v-mask-layer ref="___select___group" @click.native="closeSelectMask">
 		<transition name="fadeup" appear>
-			<div class="v-select-group-container" v-show="visible">
+			<div class="v-select-group-container" v-show="visible" @click.stop="()=>{}">
 				<v-row class="plr10" :style="headerStyle" v-show="(title || showCloseBtn)">
 					<v-col class="h50 lh50" @click.native.stop="close">
 						<span v-if="showCloseBtn">取消</span>
@@ -83,7 +83,6 @@ export default {
 				})
 			})
 
-			// this.$nextTick(() => {
 			this.selectGroupMask.open()
 			this.comps.forEach((item, i) => {
 				item.open()
@@ -118,7 +117,7 @@ export default {
 			this.selectGroupMask.close()
 		},
 		getCurrentOption(option) {
-			this.onchange && this.onchange(option, this.resetListPosition)
+			this.onchange && this.onchange(option, this.resetListPosition, this.selectOptions)
 			this.setList(option)
 
 			let flag = false
@@ -131,29 +130,23 @@ export default {
 					this.$set(this.selectValue, i, option.value)
 					option.optionList && (flag = true)
 				}
-
-				// group.forEach((option, j) => {
-				// 	if (option.value === this.selectValue[i]) {
-				// 		this.$set(this.selectOptions, i, option)
-				// 	}
-				// })
 			})
 
 			this.setSelectOptions()
 		},
 
 		setSelectOptions() {
-			this.selectData.forEach((group, i)=>{
-				group.forEach(option=>{
-					if (option.value === this.selectValue[i]) {
+			this.selectData.forEach((group, i) => {
+				group.forEach(option => {
+					if (option.value == this.selectValue[i]) {
 						this.$set(this.selectOptions, i, option)
 					}
 				})
 			})
 		},
 
-		resetListPosition(i) {
-			this.$set(this.selectValue, i, this.selectData[i][0].value)
+		resetListPosition(i, j = 0) {
+			this.$set(this.selectValue, i, this.selectData[i][j].value)
 		},
 
 		setList(option) {

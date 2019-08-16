@@ -66,10 +66,6 @@ export default {
 		ms: {
 			type: [String, Number],
 			default: 500
-		},
-		successText: {
-			type: String,
-			default: '更新成功'
 		}
 	},
 	data() {

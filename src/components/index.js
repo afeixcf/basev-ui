@@ -13,6 +13,7 @@ import VToast from './v-toastr'
 import VTooltip from './v-tooltip'
 import VSearch from './v-search'
 import VTimePicker from './v-time-picker'
+import VDatePicker from './v-date-picker'
 
 const components = {
   install,
@@ -30,7 +31,8 @@ const components = {
   VToast,
   VTooltip,
   VSearch,
-  VTimePicker
+  VTimePicker,
+  VDatePicker
 }
 
 function install(Vue) {

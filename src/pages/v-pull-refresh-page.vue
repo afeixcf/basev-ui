@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<v-pull-refresh :on-refresh="onRefresh" distance="70">
-			<template v-slot:pull>
+			<!-- <template v-slot:pull>
 				请继续下拉
 			</template>
 			<template v-slot:beforeLoad>
-				送开以触发更新
+				松开以触发更新
 			</template>
 			<template v-slot:loading>
 				更新中
@@ -15,7 +15,7 @@
 			</template>
 			<template v-slot:loadFail>
 				更新失败
-			</template>
+			</template> -->
 		</v-pull-refresh>
 		<div class="h60">asdasdas</div>
 		<div class="h60">asdasdas</div>
